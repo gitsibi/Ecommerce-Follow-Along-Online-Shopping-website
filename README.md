@@ -121,3 +121,112 @@ created a User Model to define how user data is structured in the database also 
 - **Testing**: Verified the delete functionality using Postman and by testing the delete flow in the application.
 
 
+# Milestone 15
+
+- Create a reusable Navbar component with links to all pages.  
+- Integrate the Navbar component across multiple pages for smooth navigation.  
+
+**Steps:**  
+1. **Create Navbar Component:**  
+   - Design a Navbar with links to:  
+     - Home  
+     - My Products  
+     - Add Product  
+     - Cart  
+   - Ensure the Navbar is responsive and works on all screen sizes.  
+
+2. **Integration:**  
+   - Add the Navbar component to all pages of the application.  
+   - Ensure smooth and easy navigation between pages.  
+
+# Milestone 16 
+  
+- Create a dedicated page to display detailed information about a single product.  
+- Add functionality to select quantity and an "Add to Cart" button.  
+
+**Steps:**  
+1. **Product Info Page:**  
+   - Design a new page to display all details of a product (e.g., name, description, price, image, etc.).  
+   - Add a quantity selector and an "Add to Cart" button.  
+
+2. **Functionality:**  
+   - Allow users to choose the quantity of the product.  
+   - Implement the "Add to Cart" button to store the selected product and quantity.  
+
+# Milestone 17
+
+- Modify the user schema to store cart products.  
+- Write a backend endpoint to receive and store product details in the cart.  
+
+**Steps:**  
+1. **Schema Update:**  
+   - Update the user schema to include a field for storing cart products.  
+
+2. **Backend Endpoint:**  
+   - Create an endpoint to receive product details (e.g., product ID, quantity) and store them in the user's cart in the database.  
+
+# Milestone 18
+
+- Create a backend endpoint to handle requests from the cart page.  
+- Write logic to fetch all products inside the user's cart based on their email.  
+
+**Steps:**  
+1. **Backend Endpoint:**  
+   - Create an endpoint to receive requests from the cart page.  
+   - Fetch all products stored in the user's cart using their email.  
+
+2. **Frontend Integration:**  
+   - Use the fetched data to display products dynamically on the cart page.  
+
+# Milestone 19  
+
+- Created a cart page to display products from the cart.  
+- Added `+` and `-` buttons to increase or decrease product quantity.  
+- Built a backend endpoint to handle quantity updates.  
+- Improved cart functionality with dynamic updates.
+
+# Milestone 20
+
+1. **Backend:**
+   - Create an endpoint to send user data via email.
+
+2. **Frontend:**
+   - Design a profile page to display:
+     - **Section 1:** Profile photo, name, and email.
+     - **Section 2:** Addresses with a button to "Add address."
+   - If no address is found, display "No address found."
+
+
+# Milestone 21  
+
+- Create a frontend form to collect address details.  
+- Store the input address in a state and handle navigation to the form page.  
+
+**Steps:**  
+1. **Address Form:**  
+   - Design a form to collect:  
+     - Country  
+     - City  
+     - Address Line 1  
+     - Address Line 2  
+     - Zip Code  
+     - Address Type  
+
+2. **State Management:**  
+   - Create a state to store the input address details.  
+
+3. **Navigation:**  
+   - When clicking "Add Address" in the profile, navigate to the address form page.  
+
+# Milestone 22 
+
+- Create a backend endpoint to store the address received from the frontend form inside the user profile in the database.  
+
+**Steps:**  
+1. **Backend Endpoint:**  
+   - Create an endpoint to receive address details (country, city, address1, address2, zip code, address type) from the frontend form.  
+   - Add the received address to the address array in the user collection.  
+
+2. **Database Update:**  
+   - Ensure the address is saved and linked to the specific user profile.  
+
