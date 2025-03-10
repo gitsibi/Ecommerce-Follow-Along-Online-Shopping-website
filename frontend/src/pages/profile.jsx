@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom"
 import AddressCard from "../components/AddressCard";
 import NavBar from "../components/navbar";
 
 export default function Profile() {
+	const navigate =useNavigate();
 	const [personalDetails, setPersonalDetails] = useState({
 		name: "",
 		email: "",
@@ -12,14 +14,12 @@ export default function Profile() {
 
 	const [addresses, setAddresses] = useState([]);
 
+
 	useEffect(() => {
 		fetch(
 			`http://localhost:8000/api/v2/user/profile?email=${"sibishree.m@kalvium.community"}`,
 			{
 				method: "GET",
-				headers: {
-					"Content-Type": "application/json",
-				},
 			}
 		)
 			.then((res) => {
@@ -35,6 +35,10 @@ export default function Profile() {
 				console.log("Addresses fetched:", data.addresses);
 			});
 	}, []);
+
+	const handleAddAddress=()=>{
+		navigate('/create-address')
+	}
 	return (
 		<>
 			<NavBar />
@@ -52,13 +56,10 @@ export default function Profile() {
 									PICTURE
 								</div>
 								<img
-									src={`http://localhost:8000/${personalDetails.avatarUrl}` || `https://cdn.vectorstock.com/i/500p/17/61/male-avatar-profile-picture-vector-10211761.jpg`}
+									src={`http://localhost:8000/${personalDetails.avatarUrl}`}
 									alt="profile"
 									className="w-40 h-40 rounded-full"
-									onError={(e) => {
-										e.target.onerror = null; // Prevents infinite loop if the default image also fails
-										e.target.src = `https://cdn.vectorstock.com/i/500p/17/61/male-avatar-profile-picture-vector-10211761.jpg`;
-									}}
+									
 								/>
 							</div>
 							<div className="h-max md:flex-grow">
@@ -98,7 +99,9 @@ export default function Profile() {
 							</h1>
 						</div>
 						<div className="w-full h-max p-5">
-							<button className="w-max px-3 py-2 bg-neutral-600 text-neutral-100 rounded-md text-center hover:bg-neutral-100 hover:text-black transition-all duration-100">
+							<button className="w-max px-3 py-2 bg-neutral-600 text-neutral-100 rounded-md text-center hover:bg-neutral-100 hover:text-black transition-all duration-100"
+							 onClick={handleAddAddress}
+							>
 								Add Address
 							</button>
 						</div>
