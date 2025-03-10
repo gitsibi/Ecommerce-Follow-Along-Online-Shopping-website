@@ -18,6 +18,25 @@ const Cart = () => {
             setProducts(data.cart.map(product => ({quantity: product['quantity'], ...product['productId']})));
             console.log("Products fetched:", data.cart);
           })
+
+          // {
+          //   "quantity": 2,
+          //   "productId": {
+          //     "_id": "123",
+          //     "name": "Laptop",   //product.productId.name
+          //     "price": 50000
+          //   }
+          // }
+
+          // into:
+
+          // {
+          //   "quantity": 2,
+          //   "_id": "123",
+          //   "name": "Laptop",   //product.name
+          //   "price": 50000
+          // }
+          
           .catch((err) => {
             console.error(" Error fetching products:", err);
           });

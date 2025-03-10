@@ -4,7 +4,7 @@ import { IoIosRemove } from "react-icons/io";
 
 export default function CartProduct({ _id, name, images, quantity, price }) {
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const [quantityVal, setQuantityVal] = useState(quantity);
+	const [quantityVal, setQuantityVal] = useState(quantity); 
 
 
 	useEffect(() => {
@@ -16,13 +16,13 @@ export default function CartProduct({ _id, name, images, quantity, price }) {
 	}, [images]);
 
 	const handleIncrement = () => {
-		const newquantityVal = quantityVal + 1;
+		const newquantityVal = quantityVal + 1; //2+1=3
         setQuantityVal(newquantityVal);
         updateQuantityVal(newquantityVal);
 	};
 
 	const handleDecrement = () => {
-        const newquantityVal = quantityVal > 1 ? quantityVal - 1 : 1;
+        const newquantityVal = quantityVal > 1 ? quantityVal - 1 : 1; 
 		setQuantityVal(newquantityVal);
         updateQuantityVal(newquantityVal);
 	};
@@ -58,7 +58,7 @@ export default function CartProduct({ _id, name, images, quantity, price }) {
 		<div className="h-max w-full p-4 flex justify-between border-b border-neutral-300 bg-neutral-100 rounded-lg">
 			<div className="flex flex-col gap-y-2">
 				<img
-					src={`http://localhost:8000${currentImage}`} // Ensure the URL is correct\
+					src={`http://localhost:8000${currentImage}`} 
 					alt={name}
 					className="w-32 h-32 object-cover rounded-lg border border-neutral-300"
 				/>

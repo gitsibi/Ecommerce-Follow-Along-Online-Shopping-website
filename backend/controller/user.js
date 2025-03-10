@@ -87,8 +87,49 @@ router.get("/profile", catchAsyncErrors(async (req, res, next) => {
             avatarUrl: user.avatar.url
         },
         addresses: user.addresses,
+
+        // {
+        //     "success": true,
+        //     "user": {
+        //         "name": "a",
+        //         "email":"a@example.com",
+        //         "phoneNumber": "1234567890",
+        //         "avatarUrl": "https://example.com/avatar.jpg"
+        //     },
+        //     "addresses": ["Address 1", "Address 2"]
+        // }
+
+        
     });
     console.log(user.avatarUrl)
 }));
+
+router.post("/add-address", catchAsyncErrors(async (req, res, next) => {
+    const { country, city, address1, address2, zipCode, addressType, email } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+    }
+
+    const newAddress = {
+        country,
+        city,
+        address1,
+        address2,
+        zipCode,
+        addressType,
+    };
+
+    user.addresses.push(newAddress);
+    await user.save();
+
+    res.status(201).json({
+        success: true,
+        addresses: user.addresses,
+    });
+}));
+
 
 module.exports = router;
