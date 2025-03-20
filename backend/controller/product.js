@@ -243,7 +243,6 @@ router.post('/cart', async (req, res) => {
 });
 
 
-
 // GET cart details endpoint
 router.get('/cartproducts', async (req, res) => {
     try {

@@ -24,7 +24,7 @@ export default function ProductDetails() {
 					`http://localhost:8000/api/v2/product/product/${id}`
 				);
 				console.log("Fetched product:", response.data.product);
-				setProduct(response.data.product); // Ensure correct state setting
+				setProduct(response.data.product); 
 				setLoading(false);
 			} catch (err) {
 				console.error("Error fetching product:", err);

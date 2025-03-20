@@ -1,6 +1,6 @@
 import React from 'react'
 import {BrowserRouter,Routes,Route} from "react-router-dom"
-import {LoginPage,SignupPage,Home,CreateProduct,MyProducts,Cart,ProductDetails,Profile,CreateAddress} from './Routes.js';
+import {LoginPage,SignupPage,Home,CreateProduct,MyProducts,Cart,ProductDetails,Profile,CreateAddress,SelectAddress,OrderConfirmation } from './Routes.js';
 import "./App.css";
 const App = () => {
   return (
@@ -19,6 +19,8 @@ const App = () => {
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/profile" element={<Profile />} />
           <Route path='/create-address' element={<CreateAddress />} />
+          <Route path="/select-address" element={<SelectAddress />} />
+          <Route path="/order-confirmation" element={<OrderConfirmation />} />
        </Routes>
     </BrowserRouter>
 
