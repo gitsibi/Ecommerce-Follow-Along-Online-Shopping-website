@@ -28,7 +28,7 @@ router.post('/place-order', async (req, res) => {
             const totalAmount = item.price * item.quantity;
             const order = new Order({
                 user: user._id,
-                orderItems: [item], // Each order contains a single item
+                orderItems: [item],
                 shippingAddress,
                 totalAmount,
             });
@@ -85,4 +85,49 @@ router.post('/place-order', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+router.get('/my-orders', async (req, res) => {
+    try {
+        const { email } = req.query;
+
+        if (!email) {
+            return res.status(400).json({ message: 'Email is required.' });
+        }
+
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found.' });
+        }
+
+        const orders = await Order.find({ user: user._id });
+
+        res.status(200).json({ orders });
+    } catch (error) {
+        console.error('Error fetching orders:', error);
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
+router.patch('/cancel-order/:orderId', async (req, res) => {
+    try {
+        const { orderId } = req.params;
+        // Find the order by ID
+        const order = await Order.findById(orderId);
+        console.log(order);
+        if (!order) {
+            return res.status(404).json({ message: 'Order not found.' });
+        }
+
+        // Update order status to 'cancelled'
+        order.orderStatus = 'Cancelled';
+        await order.save();
+
+        res.status(200).json({ message: 'Order cancelled successfully.', order });
+    } catch (error) {
+        console.error('Error cancelling order:', error);
+        res.status(500).json({ message: error.message });
+    }
+});
+
 module.exports = router;
